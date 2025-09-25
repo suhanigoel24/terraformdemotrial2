@@ -3,7 +3,7 @@
 This project creates basic AWS infrastructure using Terraform, including:
 
 - VPC with CIDR block 10.0.0.0/16
-- Public subnet in us-east-1a availability zone
+- Public subnet in ap-south-1a availability zone
 - Internet Gateway
 - Public Route Table
 
