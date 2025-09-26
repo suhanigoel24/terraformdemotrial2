@@ -1,17 +1,16 @@
 # Elastic IPs for NAT Gateways
+# Elastic IP for NAT Gateway
 resource "aws_eip" "nat_eip" {
-  count  = length(var.public_subnets)
   domain = "vpc"
 }
 
-# NAT Gateways (one per public subnet)
+# Single NAT Gateway in first Public Subnet
 resource "aws_nat_gateway" "nat" {
-  count         = length(var.public_subnets)
-  allocation_id = aws_eip.nat_eip[count.index].id
-  subnet_id     = aws_subnet.public[count.index].id
+  allocation_id = aws_eip.nat_eip.id
+  subnet_id     = aws_subnet.public[0].id
 
   tags = {
-    Name = "NAT-${count.index + 1}"
+    Name = "Demo-NAT-GW"
   }
 
   depends_on = [aws_internet_gateway.igw]
