@@ -1,7 +1,6 @@
 # Public Route Table
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.myVPC.id
-
   tags = {
     Name = "PublicRouteTable"
   }
